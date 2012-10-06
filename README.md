@@ -1,8 +1,8 @@
 # MISAWA::MD
 
-Githubでのコードレビューを濃厚にする拡張です。
+Githubでのコードレビューに対する最高のソリューション
 
-[Install](https://chrome.google.com/webstore/detail/misawamd/legplkhbgdelfceignhcchogkmoflagl)
+[Chrome ウェブストア](https://chrome.google.com/webstore/detail/misawamd/legplkhbgdelfceignhcchogkmoflagl)
 
 ## 詳細
 

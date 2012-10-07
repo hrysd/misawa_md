@@ -13,6 +13,9 @@ $(function() {
       $('#images').append("<img class='image" + key + "' src='" + val['image'] + "' />");
       $('.image' + key).click(function(){
         copy("![みさわ](" + $(this).attr('src') + ")");
+        $('#notice').fadeIn('normal', function(){
+                           $('#notice').fadeOut();
+        });
       })
     });
   });

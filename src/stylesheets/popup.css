@@ -1,6 +1,19 @@
 body {
   min-width: 590px;
 }
+
+#notice {
+  position:fixed;
+  text-align: center;
+  display: none;
+  width: 590px;
+  height: auto;
+  color: black;
+  font-weight: bold;
+  font-size: 50px;
+  text-shadow: 0 15px 10px rgba(0,0,0,0.5);
+}
+
 img {
   margin:7px;
   border:2px solid #666;
@@ -8,6 +21,7 @@ img {
   width: 100px;
   height: auto;
 }
+
 img:hover {
   cursor: pointer;
   margin: 5px;

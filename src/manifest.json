@@ -1,6 +1,6 @@
 {
   "name": "MISAWA::MD",
-  "version": "0.1",
+  "version": "0.2",
   "description": "markdown形式で名言をコピーします。",
   "manifest_version": 2,
   "icons": {

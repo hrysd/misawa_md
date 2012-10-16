@@ -19,13 +19,13 @@ $(function() {
       });
     });
   };
-      
+
   $.getJSON('data.json', function(data) {
     clean_list();
     images = data;
     $.each(data, add_to_list);
   });
-      
+
   $(document).ready(function(){
     $("#search").keydown(function(e){
       if (e.which === 13) {
@@ -34,4 +34,4 @@ $(function() {
       }
     });
   });
-});    
+});

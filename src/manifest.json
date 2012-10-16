@@ -8,6 +8,9 @@
     "48": "images/icon_048.png",
     "16": "images/icon_016.png"
   },
+  "background": {
+    "scripts" : ["javascripts/jquery.js", "javascripts/background.js"]
+  },
   "browser_action": {
     "default_icon": "images/icon_019.png",
     "default_title": "MISAWA::MD",

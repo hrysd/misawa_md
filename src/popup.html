@@ -8,9 +8,12 @@
     <script src='javascripts/popup.js'></script>
   </head>
   <body>
-    <div id='notice'>がってん！</div>
-    <div><input type='text' id='search' placeholder='search' /></div>
+  	<div id="header">
+  		<input type='text' id='keyword' placeholder='search' /><input id='search_btn' type='button' value='がってん' />
+  	</div>
+    <div id='notice'>がってん！</div>    
     <div id='images'></div>
-    <textarea id='tmp_area'></textarea>
+  	
+  	<input id='clipbox' type='text' value='目が離れすぎている' readonly='readonly' />  	
   </body>
 </html>

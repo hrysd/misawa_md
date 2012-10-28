@@ -1,23 +1,16 @@
-body {
-  min-width: 590px;
+* {
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 
-#notice {
-  position:fixed;
-  text-align: center;
-  display: none;
-  width: 590px;
-  height: auto;
-  color: black;
-  font-weight: bold;
-  font-size: 50px;
-  text-shadow: 0 15px 10px rgba(0,0,0,0.5);
+body {
+  min-width: 590px;
+  padding-top: 24px;
 }
 
 img {
-  margin:7px;
-  border:2px solid #666;
-  vertical-align:middle;
+  margin: 7px;
+  border: 2px solid #666666;
+  vertical-align: middle;
   width: 100px;
   height: auto;
 }
@@ -26,4 +19,57 @@ img:hover {
   cursor: pointer;
   margin: 5px;
   border: 4px solid orange;
+}
+
+input[type='button'] {
+	background-color: #6699CC;
+	color: #FFFFFF;
+	border: 0px;
+}
+
+input[type='button']:hover {
+	background-color: #88BBEE;
+}
+
+#header {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	background-color: #666666;
+	text-align: right;
+	font-size: 10%;
+}
+
+#notice {
+  position: fixed;
+  text-align: center;
+  display: none;
+  width: 590px;
+  height: auto;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 50px;
+  text-shadow: 0px 0px 10px #000000;
+}
+
+#clipbox {
+	width: 100%;
+	color: #444444;
+	font-size: 8pt;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    background: #DDDDDD;
+}
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    background: #AAAAAA;
 }

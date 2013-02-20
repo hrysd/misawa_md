@@ -1,8 +1,5 @@
 $(function() {
   
-  /// デフォルト画像リスト
-  var images;  
-  
   // リストを初期化
   function clean_list() {
     $("#images").html("");
@@ -23,11 +20,14 @@ $(function() {
   function init_list() {
     clean_list();
     
-    $.getJSON('data.json', function(data) {
-      clean_list();
-      images = data;
-      $.each(data, add_to_list);
-    });
+    if (typeof(localStorage['images.json']) == 'undefined') {
+      $.getJSON('http://cloud.github.com/downloads/june29/horesase-boys/meigens.json', function(data) {
+        localStorage['images.json'] = JSON.stringify(data);
+        $.each(data, add_to_list);
+      });
+    } else {
+      $.each(JSON.parse(localStorage['images.json']), add_to_list);
+    }
   };
   
   
@@ -54,7 +54,11 @@ $(function() {
     }
     
     clean_list();
-    chrome.extension.getBackgroundPage().search(keyword, add_to_list);
+
+    var queryResult = Enumerable.From(JSON.parse(localStorage['images.json']))
+                        .Where(function (x) { return x.title.indexOf(keyword) !== -1 || x.character.indexOf(keyword) !== -1 || x.body.indexOf(keyword) !== -1 })
+                        .ToArray();
+    $.each(queryResult, add_to_list);
   };
   
   

@@ -28,10 +28,12 @@ $(function() {
     clean_list();
 
     if (typeof(localStorage['images.json']) == 'undefined') {
-      $.getJSON(IMAGES_JSON_URL, function(data) {
+      $.ajax(IMAGES_JSON_URL, {dataType: 'json'}).success(function(data){
         localStorage['images.json'] = JSON.stringify(data);
         current_images_json = data;
         append_image(IMAGES_PER_PAGE);
+      }).fail(function(){
+        alert("データ取得エラー：" + IMAGES_JSON_URL);
       });
     } else {
       current_images_json = JSON.parse(localStorage['images.json']);

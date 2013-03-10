@@ -1,8 +1,12 @@
 $(function() {
-  
-  /// デフォルト画像リスト
-  var images;  
-  
+  // JSONのURL
+  var IMAGES_JSON_URL = 'http://cloud.github.com/downloads/june29/horesase-boys/meigens.json';
+  // ページ当たりの件数
+  var IMAGES_PER_PAGE = 15;
+  // 未ロードのjsonを保持する変数
+  var current_images_json;
+
+
   // リストを初期化
   function clean_list() {
     $("#images").html("");
@@ -22,12 +26,19 @@ $(function() {
   /// 画像のリストを初期化します。
   function init_list() {
     clean_list();
-    
-    $.getJSON('data.json', function(data) {
-      clean_list();
-      images = data;
-      $.each(data, add_to_list);
-    });
+
+    if (typeof(localStorage['images.json']) == 'undefined') {
+      $.ajax(IMAGES_JSON_URL, {dataType: 'json'}).success(function(data){
+        localStorage['images.json'] = JSON.stringify(data);
+        current_images_json = data;
+        append_image(IMAGES_PER_PAGE);
+      }).fail(function(){
+        alert("データ取得エラー：" + IMAGES_JSON_URL);
+      });
+    } else {
+      current_images_json = JSON.parse(localStorage['images.json']);
+      append_image(IMAGES_PER_PAGE);
+    }
   };
   
   
@@ -54,10 +65,22 @@ $(function() {
     }
     
     clean_list();
-    chrome.extension.getBackgroundPage().search(keyword, add_to_list);
+
+    current_images_json = Enumerable.From(JSON.parse(localStorage['images.json']))
+                           .Where(function (x) { return x.title.indexOf(keyword) !== -1 || x.character.indexOf(keyword) !== -1 || x.body.indexOf(keyword) !== -1 })
+                           .ToArray();
+    append_image(IMAGES_PER_PAGE);
   };
   
-  
+  /// 指定された数だけ画像を追加します。
+  function append_image(image_count) {
+    $.each(current_images_json.slice(0, image_count), add_to_list);
+    current_images_json = current_images_json.slice(image_count);
+
+    var load_btn = $("#load_next_btn, #load_all_btn");
+    (current_images_json.length > 0)? load_btn.show() : load_btn.hide();
+  };
+
   $(document).ready(function() {
     // リストを初期化
     init_list();
@@ -74,5 +97,15 @@ $(function() {
       search_image($("#keyword").val());
     });
     
+    // 次ボタンを押した時
+    $("#load_next_btn").click(function(e) {
+      append_image(IMAGES_PER_PAGE);
+    });
+
+    // 全部ボタンを押した時
+    $("#load_all_btn").click(function(e) {
+      append_image(current_images_json.length);
+    });
+
   });  
 });

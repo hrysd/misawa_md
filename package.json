@@ -1,6 +1,6 @@
 {
   "name": "misawa_md",
-  "version": "1.0.0",
+  "version": "0.9.1",
   "description": "Githubでのコードレビューに対する最高のソリューション",
   "main": "index.js",
   "scripts": {

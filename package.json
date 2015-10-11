@@ -1,0 +1,22 @@
+{
+  "name": "misawa_md",
+  "version": "1.0.0",
+  "description": "Githubでのコードレビューに対する最高のソリューション",
+  "main": "index.js",
+  "scripts": {
+    "release": "zip -r misawa_md.zip ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hrysd/misawa_md.git"
+  },
+  "author": {
+    "name": "Hiroshi Yoshida",
+    "url": "http://hrysd.org"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hrysd/misawa_md/issues"
+  },
+  "homepage": "https://github.com/hrysd/misawa_md#readme"
+}

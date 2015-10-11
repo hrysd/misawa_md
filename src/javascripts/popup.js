@@ -1,18 +1,16 @@
 $(function() {
   // JSONのURL
-  var IMAGES_JSON_URL = 'http://cloud.github.com/downloads/june29/horesase-boys/meigens.json';
+  var IMAGES_JSON_URL = 'http://horesase.github.io/horesase-boys/meigens.json'
   // ページ当たりの件数
   var IMAGES_PER_PAGE = 15;
   // 未ロードのjsonを保持する変数
   var current_images_json;
 
-
   // リストを初期化
   function clean_list() {
     $("#images").html("");
   };
-    
-  
+
   /// クリップボードに文字列を転送します。
   /// @param text 転送する文字列
   function copy(text) {
@@ -21,27 +19,17 @@ $(function() {
     clip.select();
     document.execCommand('copy');
   };
-  
-  
+
   /// 画像のリストを初期化します。
   function init_list() {
     clean_list();
 
-    if (typeof(localStorage['images.json']) == 'undefined') {
-      $.ajax(IMAGES_JSON_URL, {dataType: 'json'}).success(function(data){
-        localStorage['images.json'] = JSON.stringify(data);
-        current_images_json = data;
-        append_image(IMAGES_PER_PAGE);
-      }).fail(function(){
-        alert("データ取得エラー：" + IMAGES_JSON_URL);
-      });
-    } else {
-      current_images_json = JSON.parse(localStorage['images.json']);
+    $.get(IMAGES_JSON_URL).done(function(json) {
+      current_images_json = json;
       append_image(IMAGES_PER_PAGE);
-    }
-  };
-  
-  
+    });
+  }
+
   /// リストに画像を登録します。
   /// @param key 画像のキー
   /// @param val 画像のURL
